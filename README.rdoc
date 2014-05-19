@@ -1,3 +1,6 @@
+=Fixture 
+fix the table name to support rails 4.0
+
 =SimpleCaptcha
 
 SimpleCaptcha is the simplest and a robust captcha plugin. Its implementation requires
