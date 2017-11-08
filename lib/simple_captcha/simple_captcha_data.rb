@@ -25,7 +25,7 @@ module SimpleCaptcha
       def clear_old_data(time = 1.hour.ago)
         return unless Time === time
 #         delete_all(["#{connection.quote_column_name(:updated_at)} < ?", time])
-        where("update_at < ?", time).each{|r|r.destroy}
+        where("updated_at < ?", time).each{|r|r.destroy}
       end
     end
   end
