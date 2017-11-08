@@ -17,13 +17,15 @@ module SimpleCaptcha
       end
       
       def remove_data(key)
-        delete_all(["#{connection.quote_column_name(:key)} = ?", key])
+#         delete_all(["#{connection.quote_column_name(:key)} = ?", key])
+        find_by(key: key).destroy
         clear_old_data(1.hour.ago)
       end
       
       def clear_old_data(time = 1.hour.ago)
         return unless Time === time
-        delete_all(["#{connection.quote_column_name(:updated_at)} < ?", time])
+#         delete_all(["#{connection.quote_column_name(:updated_at)} < ?", time])
+        where("update_at < ?", time).each{|r|r.destroy}
       end
     end
   end
